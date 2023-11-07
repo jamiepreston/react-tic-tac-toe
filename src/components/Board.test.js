@@ -1,13 +1,10 @@
-import { render, shallow, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import React from "react";
-import App from './App';
+import Board from './Board';
 
 describe('tic-tac-toe', () => {
   test('Alternates turn', () => {
-    render(<App/>);
-    const titleElement = screen.getByText(/Noughts and Crosses/i);
-    expect(titleElement).toBeInTheDocument();
-
+    render(<Board/>);
     // Play two moves
     fireEvent.click(screen.getByTestId('square0'));
     const turnElement1 = screen.getByText(/O's turn/i);
@@ -19,10 +16,7 @@ describe('tic-tac-toe', () => {
   });
 
   test('Displays winner', () => {
-    render(<App/>);
-    const titleElement = screen.getByText(/Noughts and Crosses/i);
-    expect(titleElement).toBeInTheDocument();
-
+    render(<Board/>);
     // Play until winner
     fireEvent.click(screen.getByTestId('square0'));
     fireEvent.click(screen.getByTestId('square3'));
